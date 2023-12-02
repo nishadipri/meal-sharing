@@ -3,10 +3,18 @@ const app = express();
 const router = express.Router();
 const path = require("path");
 
+const futureMealsRouter = require("./api/future-meals");
+const pastMealsRouter = require("./api/pastMeals");
+const allMealsRouter = require("./api/allMeals");
+const firstMealRouter = require("./api/firstMeal");
+const lastMealRouter = require("./api/lastMeal");
+
+
 const mealsRouter = require("./api/meals");
 const buildPath = path.join(__dirname, "../../dist");
 const port = process.env.PORT || 3000;
 const cors = require("cors");
+
 
 // For week4 no need to look into this!
 // Serve the built client html
@@ -20,7 +28,17 @@ app.use(express.json());
 app.use(cors());
 
 router.use("/meals", mealsRouter);
+router.use("/future-meals", futureMealsRouter);
+router.use("/past-meals", pastMealsRouter);
+router.use("/all-meals", allMealsRouter);
+router.use("/first-meal", firstMealRouter);
+router.use("/last-meal", lastMealRouter);
 
+
+app.get("/my-route", (req, res) => {
+  res.send("Hi friend");
+});
+ 
 if (process.env.API_PATH) {
   app.use(process.env.API_PATH, router);
 } else {
