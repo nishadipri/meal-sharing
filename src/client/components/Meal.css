@@ -1,0 +1,19 @@
+.meal-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 18px;
+    background-color:#28397D ;
+    height: 300px;
+  }
+  
+  .meal-card h3 {
+    margin-top: 0;
+    color: #FFFFFF;
+  }
+  
+  .meal-card p {
+    margin: 8px 0;
+    color: #dbdedd;
+  }
+  
