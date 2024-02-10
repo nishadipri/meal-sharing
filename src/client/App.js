@@ -1,20 +1,29 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  BrowserRouter,
+  Routes,
+} from "react-router-dom";
 import TestComponent from "./components/TestComponent/TestComponent";
+import MealList from "./components/MealList";
+import Home from "./components/Home";
+import MealDetails from "./components/MealDetails";
 
 function App() {
   return (
-    <Router>
-      <Route exact path="/">
-        <p>test</p>
-      </Route>
-      <Route exact path="/lol">
-        <p>lol</p>
-      </Route>
-      <Route exact path="/test-component">
-        <TestComponent></TestComponent>
-      </Route>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />}>
+          <Route index element={<MealList />} />
+          <Route exact path="/meals" element={<MealList />} />
+          <Route path="/meals/:id" element={<MealDetails />} />
+        </Route>
+      </Routes>
+
+      {/*<MealList/>*/}
+    </BrowserRouter>
   );
 }
 
